@@ -28,11 +28,11 @@ const HomePage = () => {
             ))}
           </Swiper>
         </section>
-        <section className="px-5 mb-10 product-male page-container">
+        <section className="px-5 mb-10 product-male page-container max-md:text-xs">
           <ProductListCategory categoryId="64b4f22643b1f1ef6da70c03" />
 
         </section>
-        <section className="px-5 mb-10 product-male page-container">
+        <section className="px-5 mb-10 product-male page-container max-md:text-xs">
           <ProductListCategory categoryId="64b4fa51242a568c6c4eb7bc" />
         </section>
         {/* <ProductList /> */}

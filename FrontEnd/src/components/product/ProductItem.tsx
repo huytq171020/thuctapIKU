@@ -12,7 +12,6 @@ const ProductItem = (item: any) => {
   const [totalItems, setTotalItem] = useState(1);
   
   useEffect(() => {
-    console.log("Error Memory Leak detected");
     // dispatch(getAllProduct());
     // setCurrenPages(products?.totalPages);
     // setTotalItem(products?.totalDocs);
@@ -23,7 +22,7 @@ const ProductItem = (item: any) => {
     item?.item || {};
 
   return (
-    <div className="flex flex-col max-h-[500px] h-full p-3 bg-white rounded-lg select-none movie-cart">
+    <div className="flex flex-col max-h-[500px] h-full p-3 bg-white rounded-lg select-none movie-cart max-md:text-xs">
       <Link
         to={`/products/${_id}`}
         className="overflow-hidden rounded-md h-[250px]"
@@ -35,7 +34,7 @@ const ProductItem = (item: any) => {
         />
       </Link>
       <div className="flex flex-col flex-1 mt-4">
-        <h5 className="mb-2 hover:text-secondary  duration-200 transition-all">
+        <h5 className="mb-2 hover:text-secondary  duration-200 transition-all ">
           <Link to={`/products/${_id}`}>{product_name}</Link>
         </h5>
         <div className="flex items-center justify-between mb-10 text-sm ">

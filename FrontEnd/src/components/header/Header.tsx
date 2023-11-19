@@ -21,60 +21,60 @@ const Header = () => {
     window.location.reload();
   };
   return (
-    <header className="header w-full shadow-lg">
+    <header className="header w-full shadow-lg max-md:w-[90%] mx-auto">
       <div className="flex items-center justify-between px-5 pt-2 mb-2 page-container">
         <div className="flex items-center w-1/2 gap-x-5">
           <div>
             <img
               src="https://book365.vn/bitrix/templates/book365-2021/images/edu-2021/logo_book365.png"
               alt=""
-              className="object-cover w-full h-full"
+              className="object-cover w-full h-full max-md:hidden"
             />
           </div>
-          <div className="w-full">
+          <div className="w-full max-md:hidden">
             <Search />
           </div>
         </div>
         <div className=" header-tell">
         </div>
       </div>
-      <nav className="flex items-center justify-between px-5 nav page-container">
-        <ul className="flex items-center py-2 pb-2 font-medium capitalize">
-          <li className="pr-3 transition-all hover:text-secondary hover:border-b-2 hover:border-b-secondary">
+      <nav className="flex items-center justify-between px-5 nav page-container ">
+        <ul className="flex items-center py-2 pb-2 font-medium capitalize ">
+          <li className="pr-3 transition-all hover:text-secondary hover:border-b-2 hover:border-b-secondary max-md:text-xs">
             <Link to="/" className="font-bold">
               Trang chủ
             </Link>
           </li>
-          <li className="px-3 transition-all hover:text-secondary hover:border-b-2 hover:border-b-secondary">
+          <li className="px-3 transition-all hover:text-secondary hover:border-b-2 hover:border-b-secondary max-md:text-xs">
             <Link to="/products" className="font-bold ">
               Sản phẩm
             </Link>
           </li>
-          <li className="px-3 transition-all hover:text-secondary hover:border-b-2 hover:border-b-secondary">
+          <li className="px-3 transition-all hover:text-secondary hover:border-b-2 hover:border-b-secondary max-md:hidden">
             <Link to="/about" className="font-bold ">
               Giới thiệu
             </Link>
           </li>
-          <li className="px-3 transition-all hover:text-secondary hover:border-b-2 hover:border-b-secondary">
+          <li className="px-3 transition-all hover:text-secondary hover:border-b-2 hover:border-b-secondary max-md:hidden">
             <Link to="/contact" className="font-bold ">
               Liên hệ
             </Link>
           </li>
-          <li className="px-3 transition-all hover:text-secondary hover:border-b-2 hover:border-b-secondary">
+          <li className="px-3 transition-all hover:text-secondary hover:border-b-2 hover:border-b-secondary max-md:hidden">
             <Link to="/news" className="font-bold ">
               Tin tức
             </Link>
           </li>
         </ul>
         <div className="flex cursor-pointer items-center gap-x-5">
-        <span>{user?.user?.user_fullName}</span>
+        <span className="max-md:hidden">{user?.user?.user_fullName}</span>
           <div className="account menu-item">
             {user ? (
               <Link to="#">
                
                 <img
                   width={20}
-                  className="rounded-full"
+                  className="rounded-full max-md:w-[50%] mx-auto"
                   src={user?.user?.user_avatar}
                   alt="Avata"
                 />

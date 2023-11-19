@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#36d8ff] text-white">
+    <footer className="bg-[#36d8ff] text-white max-md:text-xs">
       <div className="px-5 footer page-container">
         <div className="grid grid-cols-4 py-10 gap-4">
           <div className="flex flex-col">
@@ -29,7 +29,7 @@ const Footer = () => {
               </form>
             </div>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col ">
             <h5>NHỮNG KHU VỰC CHÍNH CỦA BOOK365</h5>
             <Link to="" className="hover:text-secondary duration-300 transition-all">Khu vực chung</Link>
             <Link to="" className="hover:text-secondary duration-300 transition-all">Sàn sách in</Link>

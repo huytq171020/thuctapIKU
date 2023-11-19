@@ -44,10 +44,10 @@ const ProductPage = () => {
         <div className="grid grid-cols-5 gap-4">
           <div className="col-span-1 bg-white w-full">
             <div className="product_category mb-5">
-              <h4 className="text-xl mb-5 ml-3 mt-3 font-bold">
+              <h4 className="text-xl mb-5 ml-3 mt-3 font-bold max-md:text-sm">
                 Loại sản phẩm
               </h4>
-              <ul className="flex flex-wrap gap-2 ml-3">
+              <ul className="flex flex-wrap gap-2 ml-3 max-md:text-sm">
                 {categories?.docs?.map((item: ICategory) => (
                   <li
                     key={item._id}
@@ -63,9 +63,9 @@ const ProductPage = () => {
           <div className="col-span-4">
             <div className="flex items-center  py-3 justify-between">
               <span className="text-[#7A7A9D]">{products?.docs?.length} sản phẩm</span>
-              <div className="sort-cate-right">
+              <div className="sort-cate-right max-md:hidden">
                 <label className="title mr-2">Sắp xếp theo</label>
-                <select className="px-2 py-2 rounded outline-none hover:border-yellow-300 duration-300 transition-all border">
+                <select className="px-2 py-2 rounded outline-none hover:border-yellow-300 duration-300 transition-all border ">
                   <option value="">Từ A {"->"} Z</option>
                   <option value="">Từ Z {"->"} A</option>
                   <option value="">Giá thấp đến cao</option>
@@ -73,7 +73,7 @@ const ProductPage = () => {
                 </select>
               </div>
             </div>
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid grid-cols-4 gap-4 max-md:grid max-md:grid-cols-2 max-md:gap-2">
               {products?.docs?.map((item: IProduct) => (
                 <ProductItem key={item._id} item={item}></ProductItem>
               ))}
