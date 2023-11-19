@@ -21,6 +21,7 @@ import { CategoryReducer } from "./Category/CategorySlice";
 import { CommentReducer } from "./Comment/CommentSlice";
 import { UserReducer } from "./User/UserReducer";
 import { AuthReducer } from "./Auth/AuthSlice";
+import { BillReducer } from "./Bill/BillSlice";
 
 const persistConfig = {
   key: "root",
@@ -35,6 +36,7 @@ export const rootReducer = combineReducers({
   users: UserReducer,
   carts: CartReducer,
   auth: AuthReducer,
+  bill: BillReducer
 });
 
 export const persistedReducer = persistReducer(persistConfig, rootReducer);

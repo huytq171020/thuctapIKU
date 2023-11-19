@@ -2,15 +2,11 @@ import mongoose from "mongoose";
 
 const billSchema = new mongoose.Schema(
   {
+    bill_code: { type: String },
     userId: { type: mongoose.Types.ObjectId, ref: "User" },
-    cartId: { type: mongoose.Schema.Types.ObjectId, ref: "Cart" },
-    shippingAddress: { type: String },
-    shippingFee: { type: Number },
     totalPrice: { type: Number },
-    totalOrder: { type: Number },
-    paymentMethod: { type: String },
     orderNotes: { type: String, default: "Khách hàng không viết gì" },
-    products: [
+    products: [ 
       {
         productId: { type: mongoose.Schema.Types.ObjectId, ref: "Product" },
         quantity: Number,
@@ -24,9 +20,19 @@ const billSchema = new mongoose.Schema(
     },
     status: {
       type: String,
-      enum: ["Pending", "Confirmed", "Delivering", "Delivered"],
+      enum: ["Pending", "Confirmed", "Rejected", "Delivering", "Delivered"],
       default: "Pending",
     },
+    bill_name:{
+      type: String,
+    },
+    bill_address:{
+      type:String
+    },
+    bill_phone:{
+      type:String
+    }
+    
   },
   { timestamps: true, versionKey: false }
 );

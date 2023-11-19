@@ -20,14 +20,6 @@ const CartSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    color: {
-      type: String,
-      required: true,
-    },
-    size: {
-      type: String,
-      required: true,
-    },
     price: {
       type: Number,
     },
@@ -35,6 +27,10 @@ const CartSchema = new mongoose.Schema(
       type: Number,
       required: true,
       default: 1,
+    },
+    status: {
+      type: String,
+      enum: ["Pending", "Confirmed"]
     },
   },
   { timestamps: true, versionKey: false }

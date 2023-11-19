@@ -1,5 +1,5 @@
 import { Link, Outlet } from "react-router-dom"
-
+import { Button, Flex } from 'antd';
 const AdminLayout = () => {
     const userStr = localStorage.getItem("users");
     const user = userStr ? JSON.parse(userStr) : null;
@@ -49,7 +49,7 @@ const AdminLayout = () => {
                                     </Link>
                                 </li>
                                 <li className="">
-                                    <Link to="/admin/cart"
+                                    <Link to="/admin/bill"
                                         className="flex w-full py-3 px-4 hover:bg-red-300 hover:text-white  duration-200 items-center">
                                         <i className="fa-solid fa-cart-shopping  mr-3"></i>
                                         <h1 className="text-[20px]">Giỏ hàng</h1>
@@ -76,7 +76,7 @@ const AdminLayout = () => {
                                     <h1 className="font-bold">{user?.user?.user_fullName}</h1>
                                     <p>{user?.user?.user_email}</p>
                                     <p>Role: {user?.user?.user_role}</p>
-                                    <p><Link to="/">Logout</Link></p>
+                                    <Button type="primary"><Link to="/"><span className="text-[black]">đăng xuất</span></Link></Button>
                                 </div>
                             </div>
                         </div>

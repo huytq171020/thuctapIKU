@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../store/hook";
 import { deleteCartItem, getCartByUser } from "../../actions/cart";
 const CartPage = () => {
@@ -64,11 +65,6 @@ const CartPage = () => {
                         <a href="">
                           <h1>{item?.product_name}</h1>
                         </a>
-                        <div className="flex">
-                          <p className="text-blue-500 font-medium">
-                            {item?.color} / {item?.size}
-                          </p>
-                        </div>
                       </div>
                     </td>
                     <td className="w-[150px] text-center text-red-500 font-bold">
@@ -120,12 +116,14 @@ const CartPage = () => {
               <div className="flex space-x-2">
                 Tổng thanh toán: (<p>{dataCarts?.length || 0} sản phẩm</p>)
                 <span className="text-red-600 font-medium">
-                  {totalCart || 0}k
+                  {totalCart || 0}đ
                 </span>
               </div>
+              <Link to="/payment">
               <button className="bg-red-600 text-white rounded-sm px-10 py-2 hover:bg-red-700 transition-all">
                 Mua hàng
               </button>
+              </Link>
             </div>
           </div>
         </div>

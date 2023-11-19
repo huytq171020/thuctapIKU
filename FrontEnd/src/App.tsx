@@ -28,6 +28,8 @@ import 'react-toastify/dist/ReactToastify.css'
 import CommentList from "./pages/admin/comment/CommentList";
 import UserUpdate from "./pages/admin/user/UserUpdate";
 import CartPage from "./pages/cart/CartPage";
+import Bill from "./pages/admin/bill/bill";
+import PaymentPage from "./pages/client/Payment";
 
 function App() {
   return (
@@ -40,11 +42,12 @@ function App() {
             <Route index element={<ProductPage />} />
             <Route path=":id" element={<ProductDetail />} />
           </Route>
-
           <Route path="cart">
             <Route index element={<CartPage />} />
           </Route>
-
+          <Route path="payment">
+            <Route index element={<PaymentPage/>} />
+          </Route>
           {/* AUTH */}
           <Route path="signin" element={<SigninPage />} />
           <Route path="signup" element={<SignupPage />} />
@@ -72,6 +75,9 @@ function App() {
           </Route>
           <Route path="comments">
             <Route index element={<CommentList />} />
+          </Route>
+          <Route path="bill">
+            <Route index element={<Bill />} />
           </Route>
         </Route>
       </Routes>

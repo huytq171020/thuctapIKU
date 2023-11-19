@@ -21,7 +21,7 @@ const Header = () => {
     window.location.reload();
   };
   return (
-    <header className="header bg-[#36d8ff] w-full shadow-lg">
+    <header className="header w-full shadow-lg">
       <div className="flex items-center justify-between px-5 pt-2 mb-2 page-container">
         <div className="flex items-center w-1/2 gap-x-5">
           <div>
@@ -67,9 +67,11 @@ const Header = () => {
           </li>
         </ul>
         <div className="flex cursor-pointer items-center gap-x-5">
+        <span>{user?.user?.user_fullName}</span>
           <div className="account menu-item">
             {user ? (
               <Link to="#">
+               
                 <img
                   width={20}
                   className="rounded-full"

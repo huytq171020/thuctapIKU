@@ -5,17 +5,10 @@ import Bill from "../model/Bill";
 
 export const addToCart = async (req, res) => {
   try {
-    const { userId, productId, color, size, quantity } = req.body;
+    const { userId, productId, quantity } = req.body;
 
     // Kiểm tra thông tin bắt buộc được cung cấp
-    if (
-      !userId ||
-      !productId ||
-      !color ||
-      !size ||
-      !quantity ||
-      quantity <= 0
-    ) {
+    if (!userId || !productId || !quantity || quantity <= 0) {
       return res.status(400).json({
         message: "Vui lòng nhập đầy đủ thông tin",
       });
@@ -30,22 +23,17 @@ export const addToCart = async (req, res) => {
     }
     // Nếu sản phẩm chưa tồn tại trong giỏ hàng, tìm giá tiền dựa trên productId
     const product = await Product.findById(productId);
-    // Tìm sản phẩm trong giỏ hàng dựa trên userId, productId, color và size
-    let cartItem = await Cart.findOne({ userId, productId, color, size });
+    let cartItem = await Cart.findOne({ userId, productId });
 
     if (!cartItem) {
-      // Nếu không tìm thấy sản phẩm, tìm sản phẩm trong giỏ hàng với cùng userId và productId nhưng khác color hoặc size
       cartItem = await Cart.findOne({ userId, productId });
 
       if (cartItem) {
-        // Nếu đã tồn tại sản phẩm với cùng userId và productId nhưng khác color hoặc size, tạo một CartItem mới với color và size mới
         cartItem = new Cart({
           userId,
           productId,
           product_name: product.product_name,
           product_image: product.product_images,
-          color,
-          size,
           quantity,
           price: product.price,
         });
@@ -60,8 +48,6 @@ export const addToCart = async (req, res) => {
           productId,
           product_name: product.product_name,
           product_image: product.product_images,
-          color,
-          size,
           quantity,
           price: product.product_price,
         });
@@ -71,9 +57,10 @@ export const addToCart = async (req, res) => {
       cartItem.quantity += quantity;
     }
     // Lưu hoặc cập nhật sản phẩm vào giỏ hàng
+
     const carts = await cartItem.save();
     // Trả về thông tin sản phẩm đã thêm vào giỏ hàng
-    res.json({ carts, messages: "Thêm giỏ hàng thành công!" });
+    res.json({ carts: carts, messages: "Thêm giỏ hàng thành công!" });
   } catch (error) {
     res.status(500).json({ error: "Internal server error." });
   }
@@ -83,7 +70,7 @@ export const addToCart = async (req, res) => {
 export const getCartByUser = async (req, res) => {
   const userId = req.params.id;
   try {
-    const carts = await Cart.find({ userId });
+    const carts = await Cart.find({ userId, status: "Pending" });
     if (carts.length > 0) {
       return res.status(200).json({ carts, message: "Get All Cart by User" });
     }

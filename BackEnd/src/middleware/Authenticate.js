@@ -10,7 +10,7 @@ export const authenticate = async (req, res, next) => {
     if (!authHeader) {
       return res.status(400).json({
         message: "Bạn phải đăng nhập để thực hiện hành động này",
-      });
+      }); 
     }
 
     const token = authHeader.split(" ")[1];
