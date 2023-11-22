@@ -15,6 +15,9 @@ const Bill = () => {
   const handleChange = (value: string, billId: any) => {
     dispatch(updateBill({ billId, status: value }))
   };
+  const handleChangePayMent = ( value:string, billId: any) => {
+    dispatch(updateBill({ billId, status: value }))
+  }
 
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-6">
@@ -29,19 +32,22 @@ const Bill = () => {
               Tên người nhận
             </th>
             <th scope="col" className="px-6 py-3">
-              Mã đơn hàng
+             địa chỉ
             </th>
             <th scope="col" className="px-6 py-3">
-              đơn hàng
+             số điện thoại
             </th>
             <th scope="col" className="px-6 py-3">
               thành tiền
             </th>
             <th scope="col" className="px-6 py-3">
-              Địa chỉ
+             ngày đặt hàng
             </th>
             <th scope="col" className="px-6 py-3">
               Trạng thái
+            </th>
+            <th scope="col" className="px-6 py-3">
+             Thanh toán
             </th>
             <th scope="col" className="px-6 py-3">
               Hành động
@@ -66,8 +72,25 @@ const Bill = () => {
                   {bill.bill_address}
                 </td>
                 <td className="px-6 py-4">{bill.bill_phone}</td>
-                <td className="px-6 py-4">{bill.createdAt}</td>
-                <td className="px-6 py-4">{bill.bill_quantity}</td>
+                <td className="px-6 py-4">{bill.totalPrice}</td>
+                <td className="px-6 py-4"> {bill.createdAt}</td>
+                <td className="px-6 py-4"> {bill.status}</td>
+                <td>
+                  <Select
+                    defaultValue={bill.paymentStatus}
+                    onChange={(value) => handleChange(value, bill._id)}
+                    options={[
+                      {
+                        value: "Paid",
+                        label: "Paid",
+                      },
+                      {
+                        value: "UnPaid",
+                        label: "Unpaid",
+                      },
+                    ]}
+                  />
+                </td>
                 <td>
                   <Select
                     defaultValue={bill.status}

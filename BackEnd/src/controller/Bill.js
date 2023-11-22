@@ -64,6 +64,7 @@ function randomString(length) {
     counter += 1;
   }
   return result;
+  
 }
 
 export const addBill = async (req, res) => {

@@ -7,4 +7,6 @@ export interface IBill {
     bill_phone: string,
     createdAt?: string,
     status:String,
+    totalPrice:number,
+    paymentStatus:String,
 }
